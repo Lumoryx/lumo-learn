@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial project setup with Git workflow, CI, and GitHub templates
 - PRD v2.1: full product requirements, UI/UX specs, Git workflow documentation
+- PRD v2.2: Loyalty Reward system — Pro users earn a free month after 30 consecutive learning days
 
 ---
 
