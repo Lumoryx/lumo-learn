@@ -1,6 +1,6 @@
 # Product Standards & Engineering Principles
 
-> 作者：Lumoryx · 版本：v1.1 · 日期：2026-05-11
+> 作者：Lumoryx · 版本：v1.2 · 日期：2026-05-11
 >
 > 本文档定义了所有产品从立项到交付的强制规范和最佳实践。
 > 每一条规范背后都有明确的"为什么"，不是约束，是护城河。
@@ -401,7 +401,82 @@ _check-flutter:
 - `make setup` 必须在 CI 环境（无交互）中可执行（所有步骤不弹出确认）
 - 每次修改 Makefile，同步更新 README 的"快速开始"章节
 
-### 6.6 代码规范
+### 6.6 CI 自动修复规范（Claude Code 强制）
+
+**所有项目必须配置 Claude Code Stop Hook，确保 AI 辅助开发时不产生破坏 CI 的代码。**
+
+#### 工作原理
+
+```
+Claude 完成一个任务，准备结束本轮对话
+    ↓
+Stop Hook 触发：自动运行 make check（lint + format + test）
+    ↓
+   通过？────────────→ 正常结束，用户看到最终回复
+    ↓ 未通过
+    ↓
+Claude 收到 CI 错误详情（通过 additionalContext 注入）
+    ↓
+Claude 自动修复所有错误
+    ↓
+再次触发 Stop Hook → 再次运行 make check
+    ↓
+通过 → 正常结束
+```
+
+> **效果**：Claude 永远不会在 CI 红灯状态下停下来交差。每一轮对话结束时，代码都保证处于可提交的状态。
+
+#### 必须配置的 Hook（`.claude/settings.json`）
+
+```json
+{
+  "hooks": {
+    "Stop": [{
+      "hooks": [{
+        "type": "command",
+        "command": "python3 -c \"\nimport subprocess, json\nresult = subprocess.run(\n    ['bash', '-c', 'export PATH=\\\"/tmp/flutter/bin:$PATH\\\" && make check'],\n    capture_output=True, text=True, cwd='<项目根目录>'\n)\nif result.returncode != 0:\n    output = (result.stdout + result.stderr)[:3000]\n    print(json.dumps({\n        'continue': False,\n        'stopReason': 'CI check failed — fix errors before finishing.',\n        'hookSpecificOutput': {\n            'hookEventName': 'Stop',\n            'additionalContext': 'CI errors found. Please fix before stopping:\\n' + output\n        }\n    }))\n\"",
+        "timeout": 120,
+        "statusMessage": "Running CI checks (make check)..."
+      }]
+    }],
+    "PostToolUse": [{
+      "matcher": "Bash",
+      "hooks": [{
+        "type": "command",
+        "command": "python3 -c \"\nimport sys, json\ntry:\n    data = json.load(sys.stdin)\n    cmd = data.get('tool_input', {}).get('command', '')\n    if 'git push' in cmd:\n        print(json.dumps({'systemMessage': '推送成功 ✓ 可使用 subscribe_pr_activity 监听 PR 的 CI 状态和 Review 评论。'}))\nexcept Exception:\n    pass\n\"",
+        "timeout": 10
+      }]
+    }]
+  }
+}
+```
+
+#### 配置规则
+
+| 规则 | 说明 |
+|------|------|
+| **Stop Hook 必须存在** | 每个 Flutter 项目必须在 `.claude/settings.json` 配置 Stop Hook |
+| **`make check` 必须通过** | Stop Hook 运行 `make check`，包含 lint + format + test |
+| **Timeout 设为 120s** | 首次运行含 pub get，给足时间 |
+| **Hook 配置提交到仓库** | `.claude/settings.json` 放入版本控制（团队共享） |
+| **`settings.local.json` 入 .gitignore** | 个人覆盖项不提交 |
+
+#### 新项目配置步骤
+
+```bash
+# 1. 创建 .claude 目录（若不存在）
+mkdir -p .claude
+
+# 2. 复制上方 Hook 配置，替换 <项目根目录>
+# 3. 验证 Hook 格式正确
+jq -e '.hooks.Stop[0].hooks[0].type' .claude/settings.json
+
+# 4. 提交配置
+git add .claude/settings.json
+git commit -m "chore(ci): add Claude Code Stop hook for auto CI check"
+```
+
+### 6.7 代码规范
 
 - **注释原则**：只写"为什么"，不写"是什么"。代码能自解释的地方不加注释
 - **函数长度**：单个函数不超过 50 行，超过则拆分
@@ -514,5 +589,6 @@ Impact（影响）  × Confidence（把握）
 |------|------|---------|
 | v1.0 | 2026-05-10 | 初版：研发流程、多语言、多主题、习惯系统、商业模式、安全、工程规范、需求转化 |
 | v1.1 | 2026-05-11 | 新增 6.5 Make 工作流规范：Makefile 强制标准、必须目标清单、编写规范、维护要求；必须工程文件新增 Makefile + .env.example；立项 Checklist 补充 make setup 验证项 |
+| v1.2 | 2026-05-11 | 新增 6.6 CI 自动修复规范：Claude Code Stop Hook 配置标准、工作原理说明、必须 Hook JSON 模板、新项目配置步骤；原 6.6 代码规范重编号为 6.7 |
 
-*文档结束 · Product Standards v1.1 · Lumoryx*
+*文档结束 · Product Standards v1.2 · Lumoryx*

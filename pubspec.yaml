@@ -76,9 +76,4 @@ flutter:
     - assets/animations/
     - assets/icons/
 
-  fonts:
-    - family: Playfair
-      fonts:
-        - asset: assets/fonts/PlayfairDisplay-Regular.ttf
-        - asset: assets/fonts/PlayfairDisplay-Bold.ttf
-          weight: 700
+  # Playfair Display loaded via google_fonts package (no local TTF needed)
