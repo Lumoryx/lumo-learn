@@ -1,0 +1,168 @@
+{
+  "@@locale": "zh",
+
+  "appName": "Lumo Learn",
+  "appTagline": "你的 AI 英语习惯，每天只需 5 分钟。",
+
+  "auth_title": "欢迎来到\nLumo Learn",
+  "auth_subtitle": "开启 14 天 Pro 免费体验",
+  "auth_continueWithApple": "使用 Apple 登录",
+  "auth_continueWithGoogle": "使用 Google 登录",
+  "auth_orDivider": "或",
+  "auth_emailPlaceholder": "电子邮箱",
+  "auth_passwordPlaceholder": "密码",
+  "auth_signInWithEmail": "使用邮箱登录",
+  "auth_noAccount": "没有账号？立即注册",
+  "auth_termsNote": "继续即表示您同意我们的服务条款",
+
+  "onboarding_step": "第 {current} 步，共 {total} 步",
+  "@onboarding_step": {
+    "placeholders": {
+      "current": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+  "onboarding_goal_title": "你学英语最想做什么？",
+  "onboarding_goal_travel": "旅行",
+  "onboarding_goal_career": "职业晋升",
+  "onboarding_goal_exam": "考试备考",
+  "onboarding_goal_immigration": "移居海外",
+  "onboarding_goal_interest": "纯粹喜欢",
+  "onboarding_level_title": "你的英语水平大概是？",
+  "onboarding_level_beginner": "入门",
+  "onboarding_level_beginner_sub": "刚开始学习",
+  "onboarding_level_elementary": "基础",
+  "onboarding_level_elementary_sub": "能进行日常对话",
+  "onboarding_level_intermediate": "中级",
+  "onboarding_level_intermediate_sub": "读写比较流利",
+  "onboarding_level_advanced": "高级",
+  "onboarding_level_advanced_sub": "接近母语水平",
+  "onboarding_interests_title": "选择你感兴趣的话题",
+  "onboarding_interests_subtitle": "最多选 3 个",
+  "onboarding_interests_tech": "科技",
+  "onboarding_interests_business": "商业",
+  "onboarding_interests_culture": "文化",
+  "onboarding_interests_sports": "体育",
+  "onboarding_interests_entertainment": "娱乐",
+  "onboarding_interests_travel": "旅行",
+  "onboarding_interests_science": "科学",
+  "onboarding_interests_food": "美食",
+  "onboarding_continue": "继续",
+  "onboarding_privacyNote": "🔒 你的数据完全私密，绝不出售",
+
+  "welcomePro_title": "你已升级 Pro！",
+  "welcomePro_subtitle": "14 天免费体验已激活",
+  "welcomePro_unlocked": "你解锁了：",
+  "welcomePro_feature_ai": "完整 AI 个性化内容",
+  "welcomePro_feature_freeze": "Streak 冻结卡（每月 3 张）",
+  "welcomePro_feature_themes": "全部 4 套高端主题",
+  "welcomePro_feature_stats": "完整学习数据统计",
+  "welcomePro_feature_noAds": "零广告，永久",
+  "welcomePro_cta": "开始学习 →",
+  "welcomePro_disclaimer": "无需信用卡 · 随时取消",
+
+  "home_greeting_morning": "早上好 ☀️",
+  "home_greeting_afternoon": "下午好 🌤",
+  "home_greeting_evening": "晚上好 🌙",
+  "home_streakDay": "连续 {count} 天 🔥",
+  "@home_streakDay": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "home_todayTheme": "今日主题",
+  "home_wordsCard_title": "{count} 个单词",
+  "@home_wordsCard_title": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "home_wordsCard_cta": "开始学习 →",
+  "home_articleCard_title": "今日短文",
+  "home_articleCard_readTime": "约 {min} 分钟 · {level}",
+  "@home_articleCard_readTime": {
+    "placeholders": {
+      "min": {"type": "int"},
+      "level": {"type": "String"}
+    }
+  },
+  "home_articleCard_cta": "立即阅读 →",
+  "home_thisWeek": "本周记录",
+  "home_loyaltyProgress": "再坚持 {days} 天即可免单下月会员！",
+  "@home_loyaltyProgress": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "home_loyaltyDays": "{done}/{total} 天",
+  "@home_loyaltyDays": {
+    "placeholders": {
+      "done": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+
+  "flashcard_tapToReveal": "点击查看释义",
+  "flashcard_listen": "🔊 朗读",
+  "flashcard_forgot": "✗  不认识",
+  "flashcard_gotIt": "✓  认识了！",
+  "flashcard_progress": "{current} / {total}",
+  "@flashcard_progress": {
+    "placeholders": {
+      "current": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+
+  "article_listenAll": "🔊 朗读全文",
+  "article_markWord": "加入生词本",
+  "article_done": "已读完 ✓",
+
+  "celebrate_title": "第 {day} 天打卡成功！🔥",
+  "@celebrate_title": {
+    "placeholders": {
+      "day": {"type": "int"}
+    }
+  },
+  "celebrate_subtitle": "今天学了 {words} 个单词\n并完成了 1 篇短文。",
+  "@celebrate_subtitle": {
+    "placeholders": {
+      "words": {"type": "int"}
+    }
+  },
+  "celebrate_share": "📤  分享我的进度",
+  "celebrate_home": "→ 返回首页",
+
+  "paywall_title": "解锁完整\n学习潜能",
+  "paywall_trialBadge": "14 天免费体验",
+  "paywall_monthly": "月付",
+  "paywall_monthlyPrice": "¥49.99/月",
+  "paywall_annual": "年付",
+  "paywall_annualPrice": "¥279.99/年",
+  "paywall_annualSaving": "省 52%",
+  "paywall_cta": "开启免费体验",
+  "paywall_disclaimer": "随时取消 · 体验期内不收费",
+  "paywall_restore": "恢复购买",
+
+  "settings_title": "设置",
+  "settings_profile": "个人资料",
+  "settings_theme": "主题与外观",
+  "settings_language": "语言",
+  "settings_notifications": "通知",
+  "settings_subscription": "订阅管理",
+  "settings_help": "帮助与反馈",
+  "settings_signOut": "退出登录",
+
+  "theme_title": "主题",
+  "theme_appearance": "外观",
+  "theme_system": "跟随系统",
+  "theme_light": "浅色",
+  "theme_dark": "深色",
+  "theme_unlockedByStreaks": "Streak 里程碑解锁",
+  "theme_locked": "🔒 {days} 天",
+  "@theme_locked": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  }
+}
