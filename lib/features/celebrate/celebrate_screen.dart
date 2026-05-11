@@ -95,7 +95,7 @@ class _CelebrateScreenState extends State<CelebrateScreen>
                       scale: _streakScale,
                       child: Column(
                         children: [
-                          Text('🔥', style: TextStyle(fontSize: 52)),
+                          const Text('🔥', style: TextStyle(fontSize: 52)),
                           const SizedBox(height: 12),
                           Text(
                             'Day $_streakDay Complete!',
@@ -128,7 +128,7 @@ class _CelebrateScreenState extends State<CelebrateScreen>
                         children: [
                           Row(
                             children: [
-                              Text('🔥', style: TextStyle(fontSize: 18)),
+                              const Text('🔥', style: TextStyle(fontSize: 18)),
                               const SizedBox(width: 6),
                               Text(
                                 'Day $_streakDay · Lumo Learn',

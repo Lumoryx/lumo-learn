@@ -158,16 +158,19 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   void _signInWithApple() {
+    setState(() => _loading = true);
     // TODO: implement Apple sign-in via Supabase
     _navigateNext();
   }
 
   void _signInWithGoogle() {
+    setState(() => _loading = true);
     // TODO: implement Google sign-in via Supabase
     _navigateNext();
   }
 
   void _signInWithEmail() {
+    setState(() => _loading = true);
     // TODO: implement email sign-in via Supabase
     _navigateNext();
   }

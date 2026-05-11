@@ -281,7 +281,7 @@ class _StreakBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('🔥', style: TextStyle(fontSize: 18)),
+        const Text('🔥', style: TextStyle(fontSize: 18)),
         const SizedBox(width: 4),
         Text(
           'Day $count streak',

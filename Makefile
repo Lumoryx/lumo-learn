@@ -151,13 +151,16 @@ format: _check-dart
 check: _check-flutter _check-dart
 	@echo "$(CYAN)▶ Running CI checks locally...$(RESET)"
 	@echo ""
-	@echo "$(BOLD)[1/3] Lint$(RESET)"
+	@echo "$(BOLD)[0/4] Code generation$(RESET)"
+	@$(FLUTTER) pub run build_runner build --delete-conflicting-outputs
+	@echo ""
+	@echo "$(BOLD)[1/4] Lint$(RESET)"
 	@$(FLUTTER) analyze --fatal-infos
 	@echo ""
-	@echo "$(BOLD)[2/3] Format$(RESET)"
+	@echo "$(BOLD)[2/4] Format$(RESET)"
 	@$(DART) format --output=none --set-exit-if-changed lib/ test/
 	@echo ""
-	@echo "$(BOLD)[3/3] Tests$(RESET)"
+	@echo "$(BOLD)[3/4] Tests$(RESET)"
 	@$(FLUTTER) test
 	@echo ""
 	@echo "$(GREEN)$(BOLD)✓ All checks passed$(RESET)"
