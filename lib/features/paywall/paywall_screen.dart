@@ -33,9 +33,16 @@ class _PaywallScreenState extends State<PaywallScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(top: 80, right: -60, child: RadialGlow(color: tokens.primary, radius: 200, opacity: 0.25)),
-          Positioned(bottom: 120, left: -60, child: RadialGlow(color: tokens.proGold, radius: 160, opacity: 0.15)),
-
+          Positioned(
+              top: 80,
+              right: -60,
+              child: RadialGlow(
+                  color: tokens.primary, radius: 200, opacity: 0.25)),
+          Positioned(
+              bottom: 120,
+              left: -60,
+              child: RadialGlow(
+                  color: tokens.proGold, radius: 160, opacity: 0.15)),
           SafeArea(
             child: Column(
               children: [
@@ -47,12 +54,14 @@ class _PaywallScreenState extends State<PaywallScreen> {
                     child: GestureDetector(
                       onTap: () => context.pop(),
                       child: Container(
-                        width: 32, height: 32,
+                        width: 32,
+                        height: 32,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.white.withOpacity(0.1),
                         ),
-                        child: Icon(Icons.close, color: tokens.onSurfaceMuted, size: 16),
+                        child: Icon(Icons.close,
+                            color: tokens.onSurfaceMuted, size: 16),
                       ),
                     ),
                   ),
@@ -65,13 +74,20 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       // Trial badge
                       Center(
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 6),
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [tokens.primary, tokens.primaryGradientEnd]),
+                            gradient: LinearGradient(colors: [
+                              tokens.primary,
+                              tokens.primaryGradientEnd
+                            ]),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text('14-day free trial',
-                              style: TextStyle(color: tokens.onPrimary, fontSize: 13, fontWeight: FontWeight.w600)),
+                              style: TextStyle(
+                                  color: tokens.onPrimary,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600)),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -93,7 +109,8 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       // Plan toggle
                       Row(
                         children: [
-                          Expanded(child: _PlanCard(
+                          Expanded(
+                              child: _PlanCard(
                             label: 'Monthly',
                             price: '\$6.99',
                             period: 'per month',
@@ -103,7 +120,8 @@ class _PaywallScreenState extends State<PaywallScreen> {
                             tokens: tokens,
                           )),
                           const SizedBox(width: 12),
-                          Expanded(child: _PlanCard(
+                          Expanded(
+                              child: _PlanCard(
                             label: 'Annual',
                             price: '\$39.99',
                             period: 'per year',
@@ -120,18 +138,26 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       // Feature list
                       GlassCard(
                         child: Column(
-                          children: _features.map((f) => Padding(
-                            padding: const EdgeInsets.only(bottom: 12),
-                            child: Row(
-                              children: [
-                                Text(f.$1, style: const TextStyle(fontSize: 18)),
-                                const SizedBox(width: 12),
-                                Text(f.$2, style: TextStyle(color: tokens.onSurface, fontSize: 14)),
-                                const Spacer(),
-                                Icon(Icons.check, color: tokens.success, size: 16),
-                              ],
-                            ),
-                          )).toList(),
+                          children: _features
+                              .map((f) => Padding(
+                                    padding: const EdgeInsets.only(bottom: 12),
+                                    child: Row(
+                                      children: [
+                                        Text(f.$1,
+                                            style:
+                                                const TextStyle(fontSize: 18)),
+                                        const SizedBox(width: 12),
+                                        Text(f.$2,
+                                            style: TextStyle(
+                                                color: tokens.onSurface,
+                                                fontSize: 14)),
+                                        const Spacer(),
+                                        Icon(Icons.check,
+                                            color: tokens.success, size: 16),
+                                      ],
+                                    ),
+                                  ))
+                              .toList(),
                         ),
                       ),
 
@@ -145,7 +171,8 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       const SizedBox(height: 12),
                       Text(
                         'Cancel anytime · No charge during trial',
-                        style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12),
+                        style: TextStyle(
+                            color: tokens.onSurfaceMuted, fontSize: 12),
                         textAlign: TextAlign.center,
                       ),
 
@@ -156,7 +183,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
                             // TODO: RevenueCat restorePurchases
                           },
                           child: Text('Restore Purchase',
-                              style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13,
+                              style: TextStyle(
+                                  color: tokens.onSurfaceMuted,
+                                  fontSize: 13,
                                   decoration: TextDecoration.underline)),
                         ),
                       ),
@@ -218,12 +247,22 @@ class _PlanCard extends StatelessWidget {
                   color: tokens.proGold.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: Text(badge!, style: TextStyle(color: tokens.proGold, fontSize: 11, fontWeight: FontWeight.w600)),
+                child: Text(badge!,
+                    style: TextStyle(
+                        color: tokens.proGold,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600)),
               ),
-            Text(label, style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13)),
+            Text(label,
+                style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13)),
             const SizedBox(height: 4),
-            Text(price, style: TextStyle(color: tokens.onSurface, fontSize: 22, fontWeight: FontWeight.bold)),
-            Text(period, style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 11)),
+            Text(price,
+                style: TextStyle(
+                    color: tokens.onSurface,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold)),
+            Text(period,
+                style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 11)),
           ],
         ),
       ),

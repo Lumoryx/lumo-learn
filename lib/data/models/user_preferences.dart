@@ -8,7 +8,16 @@ enum LearningGoal { travel, career, exam, immigration, interest }
 
 enum EnglishLevel { beginner, elementary, intermediate, advanced }
 
-enum InterestTopic { tech, business, culture, sports, entertainment, travel, science, food }
+enum InterestTopic {
+  tech,
+  business,
+  culture,
+  sports,
+  entertainment,
+  travel,
+  science,
+  food
+}
 
 enum AppearanceMode { system, light, dark }
 

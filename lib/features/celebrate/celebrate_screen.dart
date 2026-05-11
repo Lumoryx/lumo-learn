@@ -26,13 +26,15 @@ class _CelebrateScreenState extends State<CelebrateScreen>
   @override
   void initState() {
     super.initState();
-    _streakCtrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
+    _streakCtrl = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 600));
     _streakScale = TweenSequence([
       TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.3), weight: 50),
       TweenSequenceItem(tween: Tween(begin: 1.3, end: 1.0), weight: 50),
     ]).animate(CurvedAnimation(parent: _streakCtrl, curve: Curves.easeInOut));
 
-    _fadeCtrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
+    _fadeCtrl = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 800));
     _fade = CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeOut);
 
     Future.delayed(const Duration(milliseconds: 300), () {
@@ -57,10 +59,13 @@ class _CelebrateScreenState extends State<CelebrateScreen>
         children: [
           // Glow burst from center
           Positioned(
-            top: 140, left: 0, right: 0,
+            top: 140,
+            left: 0,
+            right: 0,
             child: Center(
               child: Container(
-                width: 360, height: 360,
+                width: 360,
+                height: 360,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: RadialGradient(colors: [
@@ -107,7 +112,10 @@ class _CelebrateScreenState extends State<CelebrateScreen>
                     const SizedBox(height: 12),
                     Text(
                       'You learned $_wordsLearned words today\nand read 1 article.',
-                      style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 16, height: 1.5),
+                      style: TextStyle(
+                          color: tokens.onSurfaceMuted,
+                          fontSize: 16,
+                          height: 1.5),
                       textAlign: TextAlign.center,
                     ),
 
@@ -124,33 +132,48 @@ class _CelebrateScreenState extends State<CelebrateScreen>
                               const SizedBox(width: 6),
                               Text(
                                 'Day $_streakDay · Lumo Learn',
-                                style: TextStyle(color: tokens.onSurface, fontSize: 14, fontWeight: FontWeight.w600),
+                                style: TextStyle(
+                                    color: tokens.onSurface,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
                           const SizedBox(height: 10),
-                          Text('Today I learned:', style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12)),
+                          Text('Today I learned:',
+                              style: TextStyle(
+                                  color: tokens.onSurfaceMuted, fontSize: 12)),
                           const SizedBox(height: 6),
                           Wrap(
                             spacing: 8,
                             runSpacing: 6,
-                            children: _sampleWords.map((w) => Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: tokens.primary.withOpacity(0.12),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Text(w, style: TextStyle(color: tokens.primary, fontSize: 12, fontWeight: FontWeight.w500)),
-                            )).toList(),
+                            children: _sampleWords
+                                .map((w) => Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 4),
+                                      decoration: BoxDecoration(
+                                        color: tokens.primary.withOpacity(0.12),
+                                        borderRadius: BorderRadius.circular(6),
+                                      ),
+                                      child: Text(w,
+                                          style: TextStyle(
+                                              color: tokens.primary,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500)),
+                                    ))
+                                .toList(),
                           ),
                           const SizedBox(height: 8),
                           Text('+ Read an article on Psychology',
-                              style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12)),
+                              style: TextStyle(
+                                  color: tokens.onSurfaceMuted, fontSize: 12)),
                           const SizedBox(height: 10),
                           Divider(color: Colors.white.withOpacity(0.08)),
                           const SizedBox(height: 6),
                           Text('lumolearn.app',
-                              style: TextStyle(color: tokens.onSurfaceMuted.withOpacity(0.5), fontSize: 11)),
+                              style: TextStyle(
+                                  color: tokens.onSurfaceMuted.withOpacity(0.5),
+                                  fontSize: 11)),
                         ],
                       ),
                     ),
@@ -191,16 +214,24 @@ class _CelebrateScreenState extends State<CelebrateScreen>
 
   List<Widget> _buildParticles(AppColorTokens tokens) {
     final positions = [
-      (40.0, 120.0, tokens.primary), (320.0, 90.0, tokens.error),
-      (60.0, 500.0, tokens.proGold), (340.0, 450.0, tokens.primary),
-      (180.0, 80.0, tokens.success), (240.0, 600.0, tokens.error),
+      (40.0, 120.0, tokens.primary),
+      (320.0, 90.0, tokens.error),
+      (60.0, 500.0, tokens.proGold),
+      (340.0, 450.0, tokens.primary),
+      (180.0, 80.0, tokens.success),
+      (240.0, 600.0, tokens.error),
     ];
-    return positions.map((p) => Positioned(
-      left: p.$1, top: p.$2,
-      child: Container(
-        width: 8, height: 8,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: p.$3.withOpacity(0.6)),
-      ),
-    )).toList();
+    return positions
+        .map((p) => Positioned(
+              left: p.$1,
+              top: p.$2,
+              child: Container(
+                width: 8,
+                height: 8,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: p.$3.withOpacity(0.6)),
+              ),
+            ))
+        .toList();
   }
 }

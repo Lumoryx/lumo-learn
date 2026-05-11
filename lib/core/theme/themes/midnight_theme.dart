@@ -42,7 +42,9 @@ class MidnightTheme {
         onError: Colors.white,
       ),
       scaffoldBackgroundColor: bg,
-      extensions: [if (isDark) tokens else tokens.copyWith(background: bg, surface: surf)],
+      extensions: [
+        if (isDark) tokens else tokens.copyWith(background: bg, surface: surf)
+      ],
     );
   }
 }

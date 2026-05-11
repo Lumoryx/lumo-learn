@@ -73,8 +73,7 @@ class SceneImagePlaceholder extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (icon != null)
-            Text(icon!, style: const TextStyle(fontSize: 32)),
+          if (icon != null) Text(icon!, style: const TextStyle(fontSize: 32)),
           if (label != null) ...[
             const SizedBox(height: 8),
             Text(

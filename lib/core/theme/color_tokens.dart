@@ -78,8 +78,7 @@ class AppColorTokens extends ThemeExtension<AppColorTokens> {
       primaryGradientEnd:
           Color.lerp(primaryGradientEnd, other.primaryGradientEnd, t)!,
       surface: Color.lerp(surface, other.surface, t)!,
-      surfaceElevated:
-          Color.lerp(surfaceElevated, other.surfaceElevated, t)!,
+      surfaceElevated: Color.lerp(surfaceElevated, other.surfaceElevated, t)!,
       background: Color.lerp(background, other.background, t)!,
       onPrimary: Color.lerp(onPrimary, other.onPrimary, t)!,
       onSurface: Color.lerp(onSurface, other.onSurface, t)!,

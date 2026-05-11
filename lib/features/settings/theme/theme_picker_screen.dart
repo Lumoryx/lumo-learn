@@ -37,9 +37,14 @@ class _ThemePickerScreenState extends State<ThemePickerScreen> {
         elevation: 0,
         leading: GestureDetector(
           onTap: () => Navigator.of(context).pop(),
-          child: Icon(Icons.arrow_back_ios_new, color: tokens.onSurfaceMuted, size: 20),
+          child: Icon(Icons.arrow_back_ios_new,
+              color: tokens.onSurfaceMuted, size: 20),
         ),
-        title: Text('Theme', style: TextStyle(color: tokens.onSurface, fontSize: 18, fontWeight: FontWeight.w600)),
+        title: Text('Theme',
+            style: TextStyle(
+                color: tokens.onSurface,
+                fontSize: 18,
+                fontWeight: FontWeight.w600)),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -62,7 +67,9 @@ class _ThemePickerScreenState extends State<ThemePickerScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: isSelected ? colors.$1 : Colors.white.withOpacity(0.1),
+                      color: isSelected
+                          ? colors.$1
+                          : Colors.white.withOpacity(0.1),
                       width: isSelected ? 2 : 1,
                     ),
                   ),
@@ -81,30 +88,44 @@ class _ThemePickerScreenState extends State<ThemePickerScreen> {
                           ),
                         ),
                         // Dots
-                        Positioned(top: 16, right: 16, child: Container(
-                          width: 20, height: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: colors.$1.withOpacity(0.8),
-                          ),
-                        )),
-                        Positioned(bottom: 36, left: 16, child: Container(
-                          width: 12, height: 12,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white.withOpacity(0.3),
-                          ),
-                        )),
+                        Positioned(
+                            top: 16,
+                            right: 16,
+                            child: Container(
+                              width: 20,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: colors.$1.withOpacity(0.8),
+                              ),
+                            )),
+                        Positioned(
+                            bottom: 36,
+                            left: 16,
+                            child: Container(
+                              width: 12,
+                              height: 12,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white.withOpacity(0.3),
+                              ),
+                            )),
                         // Label
                         Positioned(
-                          bottom: 12, left: 12, right: 12,
+                          bottom: 12,
+                          left: 12,
+                          right: 12,
                           child: Row(
                             children: [
                               Text(theme.label,
-                                  style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600)),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600)),
                               const Spacer(),
                               if (isSelected)
-                                Icon(Icons.check_circle, color: colors.$1, size: 18),
+                                Icon(Icons.check_circle,
+                                    color: colors.$1, size: 18),
                             ],
                           ),
                         ),
@@ -120,7 +141,11 @@ class _ThemePickerScreenState extends State<ThemePickerScreen> {
 
           // Milestone-unlocked themes
           Text('UNLOCKED BY STREAKS',
-              style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1)),
+              style: TextStyle(
+                  color: tokens.onSurfaceMuted,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1)),
           const SizedBox(height: 12),
           GridView.count(
             crossAxisCount: 3,
@@ -139,10 +164,17 @@ class _ThemePickerScreenState extends State<ThemePickerScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.lock_outline, color: tokens.onSurfaceMuted, size: 20),
+                    Icon(Icons.lock_outline,
+                        color: tokens.onSurfaceMuted, size: 20),
                     const SizedBox(height: 6),
-                    Text(t.$1, style: TextStyle(color: tokens.onSurface, fontSize: 12, fontWeight: FontWeight.w600)),
-                    Text(t.$2, style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 10)),
+                    Text(t.$1,
+                        style: TextStyle(
+                            color: tokens.onSurface,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600)),
+                    Text(t.$2,
+                        style: TextStyle(
+                            color: tokens.onSurfaceMuted, fontSize: 10)),
                   ],
                 ),
               );
@@ -153,7 +185,11 @@ class _ThemePickerScreenState extends State<ThemePickerScreen> {
 
           // Appearance mode
           Text('APPEARANCE',
-              style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1)),
+              style: TextStyle(
+                  color: tokens.onSurfaceMuted,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1)),
           const SizedBox(height: 12),
           GlassCard(
             child: Row(
@@ -164,20 +200,28 @@ class _ThemePickerScreenState extends State<ThemePickerScreen> {
                     onTap: () => setState(() => _appearance = mode),
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 200),
-                      margin: EdgeInsets.symmetric(horizontal: mode == 'Light' ? 6 : 0),
+                      margin: EdgeInsets.symmetric(
+                          horizontal: mode == 'Light' ? 6 : 0),
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
-                        color: isSelected ? tokens.primary.withOpacity(0.2) : Colors.transparent,
+                        color: isSelected
+                            ? tokens.primary.withOpacity(0.2)
+                            : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
-                        border: isSelected ? Border.all(color: tokens.primary.withOpacity(0.5)) : null,
+                        border: isSelected
+                            ? Border.all(color: tokens.primary.withOpacity(0.5))
+                            : null,
                       ),
                       child: Text(
                         mode,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: isSelected ? tokens.primary : tokens.onSurfaceMuted,
+                          color: isSelected
+                              ? tokens.primary
+                              : tokens.onSurfaceMuted,
                           fontSize: 13,
-                          fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                          fontWeight:
+                              isSelected ? FontWeight.w600 : FontWeight.normal,
                         ),
                       ),
                     ),

@@ -33,9 +33,16 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(top: -40, left: -60, child: RadialGlow(color: tokens.primary, radius: 200, opacity: 0.2)),
-          Positioned(bottom: 100, right: -60, child: RadialGlow(color: tokens.error, radius: 150, opacity: 0.12)),
-
+          Positioned(
+              top: -40,
+              left: -60,
+              child:
+                  RadialGlow(color: tokens.primary, radius: 200, opacity: 0.2)),
+          Positioned(
+              bottom: 100,
+              right: -60,
+              child:
+                  RadialGlow(color: tokens.error, radius: 150, opacity: 0.12)),
           SafeArea(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -50,7 +57,10 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(_greeting(),
-                            style: TextStyle(color: tokens.onSurface, fontSize: 22, fontWeight: FontWeight.bold)),
+                            style: TextStyle(
+                                color: tokens.onSurface,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold)),
                         const SizedBox(height: 4),
                         _StreakBadge(count: streakCount, tokens: tokens),
                       ],
@@ -58,13 +68,16 @@ class HomeScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () => context.push(AppRoutes.settings),
                       child: Container(
-                        width: 40, height: 40,
+                        width: 40,
+                        height: 40,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: tokens.surface,
-                          border: Border.all(color: Colors.white.withOpacity(0.1)),
+                          border:
+                              Border.all(color: Colors.white.withOpacity(0.1)),
                         ),
-                        child: Icon(Icons.person_outline, color: tokens.onSurfaceMuted, size: 20),
+                        child: Icon(Icons.person_outline,
+                            color: tokens.onSurfaceMuted, size: 20),
                       ),
                     ),
                   ],
@@ -80,29 +93,40 @@ class HomeScreen extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
                               color: tokens.primary.withOpacity(0.15),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: Text('Today\'s Theme',
-                                style: TextStyle(color: tokens.primary, fontSize: 11, fontWeight: FontWeight.w600)),
+                                style: TextStyle(
+                                    color: tokens.primary,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600)),
                           ),
                         ],
                       ),
                       const SizedBox(height: 8),
                       Text(todayTheme,
-                          style: TextStyle(color: tokens.onSurface, fontSize: 17, fontWeight: FontWeight.w600)),
+                          style: TextStyle(
+                              color: tokens.onSurface,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600)),
                       const SizedBox(height: 16),
                       Row(
                         children: [
                           const Text('📚', style: TextStyle(fontSize: 18)),
                           const SizedBox(width: 8),
                           Text('$wordsCount Words',
-                              style: TextStyle(color: tokens.onSurface, fontSize: 14, fontWeight: FontWeight.w500)),
+                              style: TextStyle(
+                                  color: tokens.onSurface,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500)),
                           const Spacer(),
                           Text('${(wordsProgress * 100).toInt()}%',
-                              style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13)),
+                              style: TextStyle(
+                                  color: tokens.onSurfaceMuted, fontSize: 13)),
                         ],
                       ),
                       const SizedBox(height: 8),
@@ -133,16 +157,21 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       // Scene thumbnail
                       Container(
-                        width: 72, height: 72,
+                        width: 72,
+                        height: 72,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            colors: [tokens.primary.withOpacity(0.3), tokens.error.withOpacity(0.2)],
+                            colors: [
+                              tokens.primary.withOpacity(0.3),
+                              tokens.error.withOpacity(0.2)
+                            ],
                           ),
                         ),
-                        child: const Center(child: Text('📖', style: TextStyle(fontSize: 28))),
+                        child: const Center(
+                            child: Text('📖', style: TextStyle(fontSize: 28))),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
@@ -150,18 +179,29 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Article',
-                                style: TextStyle(color: tokens.primary, fontSize: 11, fontWeight: FontWeight.w600)),
+                                style: TextStyle(
+                                    color: tokens.primary,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600)),
                             const SizedBox(height: 4),
                             Text(articleTitle,
-                                style: TextStyle(color: tokens.onSurface, fontSize: 15, fontWeight: FontWeight.w600)),
+                                style: TextStyle(
+                                    color: tokens.onSurface,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600)),
                             const SizedBox(height: 4),
                             Text('~3 min · $articleLevel',
-                                style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12)),
+                                style: TextStyle(
+                                    color: tokens.onSurfaceMuted,
+                                    fontSize: 12)),
                             const SizedBox(height: 10),
                             GestureDetector(
                               onTap: () => context.push(AppRoutes.learnArticle),
                               child: Text('Read Now →',
-                                  style: TextStyle(color: tokens.primary, fontSize: 13, fontWeight: FontWeight.w600)),
+                                  style: TextStyle(
+                                      color: tokens.primary,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600)),
                             ),
                           ],
                         ),
@@ -173,7 +213,11 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Weekly calendar
-                Text('This Week', style: TextStyle(color: tokens.onSurface, fontSize: 15, fontWeight: FontWeight.w600)),
+                Text('This Week',
+                    style: TextStyle(
+                        color: tokens.onSurface,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600)),
                 const SizedBox(height: 12),
                 _WeekCalendar(tokens: tokens),
 
@@ -189,7 +233,10 @@ class HomeScreen extends StatelessWidget {
                           const Text('🎁', style: TextStyle(fontSize: 18)),
                           const SizedBox(width: 8),
                           Text('Loyalty Reward',
-                              style: TextStyle(color: tokens.proGold, fontSize: 14, fontWeight: FontWeight.w600)),
+                              style: TextStyle(
+                                  color: tokens.proGold,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600)),
                         ],
                       ),
                       const SizedBox(height: 8),
@@ -209,7 +256,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
                       Text('$loyaltyDone/$loyaltyTotal days',
-                          style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12)),
+                          style: TextStyle(
+                              color: tokens.onSurfaceMuted, fontSize: 12)),
                     ],
                   ),
                 ),
@@ -237,7 +285,8 @@ class _StreakBadge extends StatelessWidget {
         const SizedBox(width: 4),
         Text(
           'Day $count streak',
-          style: TextStyle(color: tokens.streak, fontSize: 15, fontWeight: FontWeight.w600),
+          style: TextStyle(
+              color: tokens.streak, fontSize: 15, fontWeight: FontWeight.w600),
         ),
       ],
     );
@@ -262,22 +311,29 @@ class _WeekCalendar extends StatelessWidget {
         final isToday = i == today;
         return Column(
           children: [
-            Text(days[i], style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12)),
+            Text(days[i],
+                style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12)),
             const SizedBox(height: 6),
             Container(
-              width: 36, height: 36,
+              width: 36,
+              height: 36,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: isDone ? tokens.primary.withOpacity(0.2) : tokens.surface,
+                color:
+                    isDone ? tokens.primary.withOpacity(0.2) : tokens.surface,
                 border: Border.all(
-                  color: isToday ? tokens.primary : Colors.white.withOpacity(0.08),
+                  color:
+                      isToday ? tokens.primary : Colors.white.withOpacity(0.08),
                   width: isToday ? 2 : 1,
                 ),
               ),
               child: Center(
                 child: Text(
                   isDone ? '✓' : '',
-                  style: TextStyle(color: tokens.primary, fontSize: 14, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: tokens.primary,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ),

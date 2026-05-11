@@ -3,18 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_routes.dart';
 import '../../../core/theme/color_tokens.dart';
-import '../../../shared/widgets/glass_card.dart';
-import '../../../shared/widgets/lumo_button.dart';
 import '../../../shared/widgets/radial_glow.dart';
 
 // Placeholder words — will be replaced by real DailyContent from provider
 final _sampleWords = [
-  ('ephemeral', '/ɪˈfem.ər.əl/', '短暂的；转瞬即逝的', 'adj. lasting for only a short time',
-      '"Fame is ephemeral, but character endures."'),
-  ('resilient', '/rɪˈzɪl.i.ənt/', '有弹性的；适应力强的', 'adj. able to recover quickly from difficulties',
-      '"She remained resilient through every challenge."'),
-  ('meticulous', '/məˈtɪk.jʊ.ləs/', '一丝不苟的；极其细心的', 'adj. very careful and precise',
-      '"He was meticulous in his research."'),
+  (
+    'ephemeral',
+    '/ɪˈfem.ər.əl/',
+    '短暂的；转瞬即逝的',
+    'adj. lasting for only a short time',
+    '"Fame is ephemeral, but character endures."'
+  ),
+  (
+    'resilient',
+    '/rɪˈzɪl.i.ənt/',
+    '有弹性的；适应力强的',
+    'adj. able to recover quickly from difficulties',
+    '"She remained resilient through every challenge."'
+  ),
+  (
+    'meticulous',
+    '/məˈtɪk.jʊ.ləs/',
+    '一丝不苟的；极其细心的',
+    'adj. very careful and precise',
+    '"He was meticulous in his research."'
+  ),
 ];
 
 class FlashcardScreen extends StatefulWidget {
@@ -34,7 +47,8 @@ class _FlashcardScreenState extends State<FlashcardScreen>
   @override
   void initState() {
     super.initState();
-    _flipCtrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
+    _flipCtrl = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 400));
     _flipAnim = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _flipCtrl, curve: Curves.easeInOut),
     );
@@ -76,9 +90,16 @@ class _FlashcardScreenState extends State<FlashcardScreen>
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(top: 60, left: -80, child: RadialGlow(color: tokens.primary, radius: 180, opacity: 0.25)),
-          Positioned(bottom: 200, right: -60, child: RadialGlow(color: tokens.error, radius: 120, opacity: 0.18)),
-
+          Positioned(
+              top: 60,
+              left: -80,
+              child: RadialGlow(
+                  color: tokens.primary, radius: 180, opacity: 0.25)),
+          Positioned(
+              bottom: 200,
+              right: -60,
+              child:
+                  RadialGlow(color: tokens.error, radius: 120, opacity: 0.18)),
           SafeArea(
             child: Column(
               children: [
@@ -89,12 +110,16 @@ class _FlashcardScreenState extends State<FlashcardScreen>
                     children: [
                       GestureDetector(
                         onTap: () => context.pop(),
-                        child: Icon(Icons.arrow_back_ios_new, color: tokens.onSurfaceMuted, size: 20),
+                        child: Icon(Icons.arrow_back_ios_new,
+                            color: tokens.onSurfaceMuted, size: 20),
                       ),
                       const Spacer(),
                       Text(
                         '${_current + 1} / ${_sampleWords.length}',
-                        style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 14, fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            color: tokens.onSurfaceMuted,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
                       ),
                       const Spacer(),
                       const SizedBox(width: 20),
@@ -148,7 +173,8 @@ class _FlashcardScreenState extends State<FlashcardScreen>
                                 ? Transform(
                                     alignment: Alignment.center,
                                     transform: Matrix4.identity()..rotateY(pi),
-                                    child: _CardBack(word: word, tokens: tokens),
+                                    child:
+                                        _CardBack(word: word, tokens: tokens),
                                   )
                                 : _CardFront(word: word, tokens: tokens),
                           );
@@ -174,11 +200,15 @@ class _FlashcardScreenState extends State<FlashcardScreen>
                               decoration: BoxDecoration(
                                 color: tokens.error.withOpacity(0.15),
                                 borderRadius: BorderRadius.circular(14),
-                                border: Border.all(color: tokens.error.withOpacity(0.4)),
+                                border: Border.all(
+                                    color: tokens.error.withOpacity(0.4)),
                               ),
                               alignment: Alignment.center,
                               child: Text('✗  Forgot',
-                                  style: TextStyle(color: tokens.error, fontSize: 15, fontWeight: FontWeight.w600)),
+                                  style: TextStyle(
+                                      color: tokens.error,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600)),
                             ),
                           ),
                         ),
@@ -191,11 +221,15 @@ class _FlashcardScreenState extends State<FlashcardScreen>
                               decoration: BoxDecoration(
                                 color: tokens.success.withOpacity(0.15),
                                 borderRadius: BorderRadius.circular(14),
-                                border: Border.all(color: tokens.success.withOpacity(0.4)),
+                                border: Border.all(
+                                    color: tokens.success.withOpacity(0.4)),
                               ),
                               alignment: Alignment.center,
                               child: Text('✓  Got it!',
-                                  style: TextStyle(color: tokens.success, fontSize: 15, fontWeight: FontWeight.w600)),
+                                  style: TextStyle(
+                                      color: tokens.success,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600)),
                             ),
                           ),
                         ),
@@ -244,7 +278,8 @@ class _SceneImage extends StatelessWidget {
               left: MediaQuery.of(context).size.width * pos.$1 - 40,
               top: 160 * pos.$2,
               child: Container(
-                width: 60, height: 60,
+                width: 60,
+                height: 60,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: tokens.primary.withOpacity(0.1),
@@ -255,11 +290,13 @@ class _SceneImage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.auto_awesome, color: tokens.primary.withOpacity(0.6), size: 28),
+                Icon(Icons.auto_awesome,
+                    color: tokens.primary.withOpacity(0.6), size: 28),
                 const SizedBox(height: 6),
                 Text(
                   'Scene · "$word"',
-                  style: TextStyle(color: Colors.white.withOpacity(0.4), fontSize: 12),
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.4), fontSize: 12),
                 ),
               ],
             ),
@@ -306,7 +343,8 @@ class _CardFront extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          Divider(color: Colors.white.withOpacity(0.08), indent: 40, endIndent: 40),
+          Divider(
+              color: Colors.white.withOpacity(0.08), indent: 40, endIndent: 40),
           const SizedBox(height: 16),
           Text(
             'Tap to reveal',
@@ -319,7 +357,11 @@ class _CardFront extends StatelessWidget {
               color: tokens.primary.withOpacity(0.12),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Text('🔊 Listen', style: TextStyle(color: tokens.primary, fontSize: 14, fontWeight: FontWeight.w500)),
+            child: Text('🔊 Listen',
+                style: TextStyle(
+                    color: tokens.primary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500)),
           ),
         ],
       ),
@@ -347,10 +389,15 @@ class _CardBack extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(word.$3,
-              style: TextStyle(color: tokens.onSurface, fontSize: 22, fontWeight: FontWeight.bold, height: 1.3)),
+              style: TextStyle(
+                  color: tokens.onSurface,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  height: 1.3)),
           const SizedBox(height: 8),
           Text(word.$4,
-              style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 15, height: 1.4)),
+              style: TextStyle(
+                  color: tokens.onSurfaceMuted, fontSize: 15, height: 1.4)),
           const SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.all(16),

@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import '../../core/constants/app_routes.dart';
 import '../../core/theme/color_tokens.dart';
 import '../../shared/widgets/lumo_button.dart';
-import '../../shared/widgets/glass_card.dart';
 import '../../shared/widgets/radial_glow.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -40,9 +39,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   ];
 
   static const _interests = [
-    ('💻', 'Technology'), ('💼', 'Business'), ('🎨', 'Culture'),
-    ('⚽', 'Sports'), ('🎬', 'Entertainment'), ('✈️', 'Travel'),
-    ('🔬', 'Science'), ('🍳', 'Food & Cooking'),
+    ('💻', 'Technology'),
+    ('💼', 'Business'),
+    ('🎨', 'Culture'),
+    ('⚽', 'Sports'),
+    ('🎬', 'Entertainment'),
+    ('✈️', 'Travel'),
+    ('🔬', 'Science'),
+    ('🍳', 'Food & Cooking'),
   ];
 
   @override
@@ -53,7 +57,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   void _next() {
     if (_step < 2) {
-      _pageCtrl.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+      _pageCtrl.nextPage(
+          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
       setState(() => _step++);
     } else {
       context.go(AppRoutes.welcomePro);
@@ -67,8 +72,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(top: 60, right: -40, child: RadialGlow(color: tokens.primary, radius: 160, opacity: 0.25)),
-
+          Positioned(
+              top: 60,
+              right: -40,
+              child: RadialGlow(
+                  color: tokens.primary, radius: 160, opacity: 0.25)),
           SafeArea(
             child: Column(
               children: [
@@ -80,7 +88,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       Text(
                         'Step ${_step + 1} of 3',
-                        style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12),
+                        style: TextStyle(
+                            color: tokens.onSurfaceMuted, fontSize: 12),
                       ),
                       const SizedBox(height: 8),
                       ClipRRect(
@@ -102,7 +111,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: PageView(
                     controller: _pageCtrl,
                     physics: const NeverScrollableScrollPhysics(),
-                    children: [_buildGoalStep(tokens), _buildLevelStep(tokens), _buildInterestsStep(tokens)],
+                    children: [
+                      _buildGoalStep(tokens),
+                      _buildLevelStep(tokens),
+                      _buildInterestsStep(tokens)
+                    ],
                   ),
                 ),
               ],
@@ -121,7 +134,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           const SizedBox(height: 16),
           Text('Why are you learning English?',
-              style: TextStyle(color: tokens.onSurface, fontSize: 22, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                  color: tokens.onSurface,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold)),
           const SizedBox(height: 6),
           Text('We\'ll personalize your daily content',
               style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13)),
@@ -136,10 +152,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: isSelected ? tokens.primary.withOpacity(0.15) : tokens.surface,
+                    color: isSelected
+                        ? tokens.primary.withOpacity(0.15)
+                        : tokens.surface,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: isSelected ? tokens.primary : Colors.white.withOpacity(0.1),
+                      color: isSelected
+                          ? tokens.primary
+                          : Colors.white.withOpacity(0.1),
                       width: isSelected ? 1.5 : 1,
                     ),
                   ),
@@ -151,12 +171,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(g.$2, style: TextStyle(color: tokens.onSurface, fontSize: 15, fontWeight: FontWeight.w600)),
-                            Text(g.$3, style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12)),
+                            Text(g.$2,
+                                style: TextStyle(
+                                    color: tokens.onSurface,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600)),
+                            Text(g.$3,
+                                style: TextStyle(
+                                    color: tokens.onSurfaceMuted,
+                                    fontSize: 12)),
                           ],
                         ),
                       ),
-                      if (isSelected) Icon(Icons.check_circle, color: tokens.primary, size: 20),
+                      if (isSelected)
+                        Icon(Icons.check_circle,
+                            color: tokens.primary, size: 20),
                     ],
                   ),
                 ),
@@ -164,10 +193,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             );
           })),
           const Spacer(),
-          LumoButton(label: 'Continue', onTap: _selectedGoal != null ? _next : null),
+          LumoButton(
+              label: 'Continue', onTap: _selectedGoal != null ? _next : null),
           const SizedBox(height: 12),
-          Center(child: Text('🔒 Your data is private and never sold',
-              style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12))),
+          Center(
+              child: Text('🔒 Your data is private and never sold',
+                  style:
+                      TextStyle(color: tokens.onSurfaceMuted, fontSize: 12))),
         ],
       ),
     );
@@ -181,7 +213,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           const SizedBox(height: 16),
           Text("What's your English level?",
-              style: TextStyle(color: tokens.onSurface, fontSize: 22, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                  color: tokens.onSurface,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold)),
           const SizedBox(height: 6),
           Text("We'll match content to your current skills",
               style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13)),
@@ -198,10 +233,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: isSelected ? tokens.primary.withOpacity(0.15) : tokens.surface,
+                    color: isSelected
+                        ? tokens.primary.withOpacity(0.15)
+                        : tokens.surface,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: isSelected ? tokens.primary : Colors.white.withOpacity(0.1),
+                      color: isSelected
+                          ? tokens.primary
+                          : Colors.white.withOpacity(0.1),
                       width: isSelected ? 1.5 : 1,
                     ),
                   ),
@@ -213,12 +252,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(g.$2, style: TextStyle(color: tokens.onSurface, fontSize: 15, fontWeight: FontWeight.w600)),
-                            Text(g.$3, style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12)),
+                            Text(g.$2,
+                                style: TextStyle(
+                                    color: tokens.onSurface,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600)),
+                            Text(g.$3,
+                                style: TextStyle(
+                                    color: tokens.onSurfaceMuted,
+                                    fontSize: 12)),
                           ],
                         ),
                       ),
-                      if (isSelected) Icon(Icons.check_circle, color: tokens.primary, size: 20),
+                      if (isSelected)
+                        Icon(Icons.check_circle,
+                            color: tokens.primary, size: 20),
                     ],
                   ),
                 ),
@@ -240,7 +288,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           const SizedBox(height: 16),
           Text('Pick your favorite topics',
-              style: TextStyle(color: tokens.onSurface, fontSize: 22, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                  color: tokens.onSurface,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold)),
           const SizedBox(height: 6),
           Text('Choose up to 3',
               style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13)),
@@ -266,10 +317,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     decoration: BoxDecoration(
-                      color: isSelected ? tokens.primary.withOpacity(0.15) : tokens.surface,
+                      color: isSelected
+                          ? tokens.primary.withOpacity(0.15)
+                          : tokens.surface,
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(
-                        color: isSelected ? tokens.primary : Colors.white.withOpacity(0.1),
+                        color: isSelected
+                            ? tokens.primary
+                            : Colors.white.withOpacity(0.1),
                         width: isSelected ? 1.5 : 1,
                       ),
                     ),
@@ -278,11 +333,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: [
                         Text(t.$1, style: const TextStyle(fontSize: 20)),
                         const SizedBox(width: 8),
-                        Text(t.$2, style: TextStyle(
-                          color: isSelected ? tokens.onSurface : tokens.onSurfaceMuted,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                        )),
+                        Text(t.$2,
+                            style: TextStyle(
+                              color: isSelected
+                                  ? tokens.onSurface
+                                  : tokens.onSurfaceMuted,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                            )),
                       ],
                     ),
                   ),

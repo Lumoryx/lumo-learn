@@ -28,7 +28,8 @@ class _WelcomeProScreenState extends State<WelcomeProScreen>
   @override
   void initState() {
     super.initState();
-    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
+    _ctrl = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 600));
     _scale = CurvedAnimation(parent: _ctrl, curve: Curves.elasticOut);
     _ctrl.forward();
   }
@@ -48,10 +49,13 @@ class _WelcomeProScreenState extends State<WelcomeProScreen>
         children: [
           // Gold glow bg
           Positioned(
-            top: 200, left: 0, right: 0,
+            top: 200,
+            left: 0,
+            right: 0,
             child: Center(
               child: Container(
-                width: 400, height: 400,
+                width: 400,
+                height: 400,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: RadialGradient(colors: [
@@ -107,22 +111,25 @@ class _WelcomeProScreenState extends State<WelcomeProScreen>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('What you unlocked:',
-                            style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13)),
+                            style: TextStyle(
+                                color: tokens.onSurfaceMuted, fontSize: 13)),
                         const SizedBox(height: 16),
                         ..._features.map((f) => Padding(
-                          padding: const EdgeInsets.only(bottom: 14),
-                          child: Row(
-                            children: [
-                              Text(f.$1, style: const TextStyle(fontSize: 20)),
-                              const SizedBox(width: 14),
-                              Text(f.$2, style: TextStyle(
-                                color: tokens.onSurface,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              )),
-                            ],
-                          ),
-                        )),
+                              padding: const EdgeInsets.only(bottom: 14),
+                              child: Row(
+                                children: [
+                                  Text(f.$1,
+                                      style: const TextStyle(fontSize: 20)),
+                                  const SizedBox(width: 14),
+                                  Text(f.$2,
+                                      style: TextStyle(
+                                        color: tokens.onSurface,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                      )),
+                                ],
+                              ),
+                            )),
                       ],
                     ),
                   ),
@@ -137,7 +144,8 @@ class _WelcomeProScreenState extends State<WelcomeProScreen>
                   const SizedBox(height: 16),
                   Text(
                     'No credit card needed · Cancel anytime',
-                    style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 12),
+                    style:
+                        TextStyle(color: tokens.onSurfaceMuted, fontSize: 12),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 40),

@@ -33,8 +33,16 @@ class _AuthScreenState extends State<AuthScreen> {
       body: Stack(
         children: [
           // Background glows
-          Positioned(top: 80, left: -60, child: RadialGlow(color: tokens.primary, radius: 180, opacity: 0.3)),
-          Positioned(bottom: 200, right: -80, child: RadialGlow(color: tokens.error, radius: 150, opacity: 0.2)),
+          Positioned(
+              top: 80,
+              left: -60,
+              child:
+                  RadialGlow(color: tokens.primary, radius: 180, opacity: 0.3)),
+          Positioned(
+              bottom: 200,
+              right: -80,
+              child:
+                  RadialGlow(color: tokens.error, radius: 150, opacity: 0.2)),
 
           SafeArea(
             child: SingleChildScrollView(
@@ -85,20 +93,30 @@ class _AuthScreenState extends State<AuthScreen> {
 
                   // Divider
                   Row(children: [
-                    Expanded(child: Divider(color: Colors.white.withOpacity(0.1))),
+                    Expanded(
+                        child: Divider(color: Colors.white.withOpacity(0.1))),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Text('or', style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13)),
+                      child: Text('or',
+                          style: TextStyle(
+                              color: tokens.onSurfaceMuted, fontSize: 13)),
                     ),
-                    Expanded(child: Divider(color: Colors.white.withOpacity(0.1))),
+                    Expanded(
+                        child: Divider(color: Colors.white.withOpacity(0.1))),
                   ]),
 
                   const SizedBox(height: 20),
 
                   // Email input
-                  _InputField(controller: _emailCtrl, hint: 'Email address', isPassword: false),
+                  _InputField(
+                      controller: _emailCtrl,
+                      hint: 'Email address',
+                      isPassword: false),
                   const SizedBox(height: 12),
-                  _InputField(controller: _passCtrl, hint: 'Password', isPassword: true),
+                  _InputField(
+                      controller: _passCtrl,
+                      hint: 'Password',
+                      isPassword: true),
 
                   const SizedBox(height: 24),
                   LumoButton(
@@ -113,7 +131,8 @@ class _AuthScreenState extends State<AuthScreen> {
                       onTap: () {},
                       child: Text(
                         "Don't have an account? Sign up",
-                        style: TextStyle(color: tokens.onSurfaceMuted, fontSize: 13),
+                        style: TextStyle(
+                            color: tokens.onSurfaceMuted, fontSize: 13),
                       ),
                     ),
                   ),
@@ -122,7 +141,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   Center(
                     child: Text(
                       'By continuing you agree to our Terms of Service',
-                      style: TextStyle(color: tokens.onSurfaceMuted.withOpacity(0.5), fontSize: 11),
+                      style: TextStyle(
+                          color: tokens.onSurfaceMuted.withOpacity(0.5),
+                          fontSize: 11),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -158,7 +179,8 @@ class _AuthScreenState extends State<AuthScreen> {
 }
 
 class _InputField extends StatelessWidget {
-  const _InputField({required this.controller, required this.hint, required this.isPassword});
+  const _InputField(
+      {required this.controller, required this.hint, required this.isPassword});
 
   final TextEditingController controller;
   final String hint;

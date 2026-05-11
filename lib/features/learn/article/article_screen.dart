@@ -40,7 +40,8 @@ class _ArticleScreenState extends State<ArticleScreen> {
     _scrollCtrl.addListener(() {
       if (_scrollCtrl.position.maxScrollExtent > 0) {
         setState(() {
-          _scrollProgress = _scrollCtrl.offset / _scrollCtrl.position.maxScrollExtent;
+          _scrollProgress =
+              _scrollCtrl.offset / _scrollCtrl.position.maxScrollExtent;
         });
       }
     });
@@ -59,11 +60,17 @@ class _ArticleScreenState extends State<ArticleScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(top: 100, right: -80, child: RadialGlow(color: tokens.primary, radius: 160, opacity: 0.2)),
+          Positioned(
+              top: 100,
+              right: -80,
+              child:
+                  RadialGlow(color: tokens.primary, radius: 160, opacity: 0.2)),
 
           // Reading progress bar (top)
           Positioned(
-            top: 0, left: 0, right: 0,
+            top: 0,
+            left: 0,
+            right: 0,
             child: LinearProgressIndicator(
               value: _scrollProgress,
               backgroundColor: Colors.transparent,
@@ -82,21 +89,27 @@ class _ArticleScreenState extends State<ArticleScreen> {
                     children: [
                       GestureDetector(
                         onTap: () => context.pop(),
-                        child: Icon(Icons.arrow_back_ios_new, color: tokens.onSurfaceMuted, size: 20),
+                        child: Icon(Icons.arrow_back_ios_new,
+                            color: tokens.onSurfaceMuted, size: 20),
                       ),
                       const Spacer(),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 6),
                         decoration: BoxDecoration(
                           color: tokens.surface,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.white.withOpacity(0.1)),
+                          border:
+                              Border.all(color: Colors.white.withOpacity(0.1)),
                         ),
                         child: GestureDetector(
                           onTap: () => setState(() => _isReading = !_isReading),
                           child: Text(
                             _isReading ? '⏸ Stop' : '🔊 Listen',
-                            style: TextStyle(color: tokens.primary, fontSize: 13, fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                color: tokens.primary,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
                       ),
@@ -116,9 +129,15 @@ class _ArticleScreenState extends State<ArticleScreen> {
                       // Level chip + read time
                       Row(
                         children: [
-                          _Chip(label: _sampleArticle.level, color: tokens.primary, tokens: tokens),
+                          _Chip(
+                              label: _sampleArticle.level,
+                              color: tokens.primary,
+                              tokens: tokens),
                           const SizedBox(width: 8),
-                          _Chip(label: '~${_sampleArticle.readMin} min read', color: tokens.onSurfaceMuted, tokens: tokens),
+                          _Chip(
+                              label: '~${_sampleArticle.readMin} min read',
+                              color: tokens.onSurfaceMuted,
+                              tokens: tokens),
                         ],
                       ),
                       const SizedBox(height: 14),
@@ -183,29 +202,39 @@ class _HeroSceneImage extends StatelessWidget {
       child: Stack(
         children: [
           // Decorative circles
-          Positioned(top: 30, right: 40, child: Container(
-            width: 80, height: 80,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: tokens.primary.withOpacity(0.12),
-            ),
-          )),
-          Positioned(bottom: 20, left: 60, child: Container(
-            width: 50, height: 50,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: tokens.error.withOpacity(0.1),
-            ),
-          )),
+          Positioned(
+              top: 30,
+              right: 40,
+              child: Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: tokens.primary.withOpacity(0.12),
+                ),
+              )),
+          Positioned(
+              bottom: 20,
+              left: 60,
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: tokens.error.withOpacity(0.1),
+                ),
+              )),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.auto_stories, color: tokens.primary.withOpacity(0.5), size: 36),
+                Icon(Icons.auto_stories,
+                    color: tokens.primary.withOpacity(0.5), size: 36),
                 const SizedBox(height: 8),
                 Text(
                   'Scene · "Why Habits Stick"',
-                  style: TextStyle(color: Colors.white.withOpacity(0.35), fontSize: 12),
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.35), fontSize: 12),
                 ),
               ],
             ),
@@ -230,7 +259,9 @@ class _Chip extends StatelessWidget {
         color: color.withOpacity(0.12),
         borderRadius: BorderRadius.circular(6),
       ),
-      child: Text(label, style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w500)),
+      child: Text(label,
+          style: TextStyle(
+              color: color, fontSize: 12, fontWeight: FontWeight.w500)),
     );
   }
 }
