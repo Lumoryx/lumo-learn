@@ -1,6 +1,6 @@
 # Product Standards & Engineering Principles
 
-> 作者：Lumoryx · 版本：v1.0 · 日期：2026-05-10
+> 作者：Lumoryx · 版本：v1.1 · 日期：2026-05-11
 >
 > 本文档定义了所有产品从立项到交付的强制规范和最佳实践。
 > 每一条规范背后都有明确的"为什么"，不是约束，是护城河。
@@ -334,14 +334,74 @@ hotfix/*    — 线上紧急修复，合入 main + 回合 develop
 .gitignore                              — 平台标准忽略 + secrets 忽略
 README.md                               — 项目说明 + 本地启动指引
 CHANGELOG.md                            — Keep a Changelog 格式
+Makefile                                — 一键式开发工作流（见 6.5）
+.env.example                            — 环境变量示例（不含真实值）
 .github/pull_request_template.md        — PR 描述模板
 .github/workflows/ci.yml                — CI 自动化
 .github/ISSUE_TEMPLATE/bug_report.md    — Bug 报告模板
 .github/ISSUE_TEMPLATE/feature_request.md — 功能需求模板
-.env.example                            — 环境变量示例（不含真实值）
 ```
 
-### 6.5 代码规范
+### 6.5 Make 工作流规范（强制）
+
+**所有项目必须提供 `Makefile`，作为开发者与项目交互的唯一入口。**
+
+> 原则：新成员 clone 仓库后，只需 `make setup` + `make run` 即可完成本地启动，无需阅读额外文档。
+
+#### 必须实现的 Make 目标
+
+| 目标 | 说明 | 用途 |
+|------|------|------|
+| `make help` | 打印所有可用命令及说明 | 默认目标，无参数时执行 |
+| `make setup` | 一键初始化：安装依赖、代码生成、复制 .env | 新成员第一次使用 |
+| `make env` | 从 `.env.example` 复制 `.env`（已存在时跳过）| 环境配置 |
+| `make gen` | 运行代码生成（Freezed / Riverpod / i18n）| 修改模型后 |
+| `make run` | 启动开发服务器（Web 默认）| 日常开发 |
+| `make check` | 本地运行 CI 全量检查（lint + format + test）| 提交前自检 |
+| `make test` | 运行全部单元测试 | 日常测试 |
+| `make lint` | 静态分析 | 单独检查 |
+| `make format` | 自动格式化代码 | 保存后修复 |
+| `make clean` | 清除构建产物和生成文件 | 排查问题 |
+| `make build-web` | 生产构建（Web）| 部署前 |
+
+#### 额外推荐目标（有后端服务时必须）
+
+| 目标 | 说明 |
+|------|------|
+| `make supa-start` | 启动本地 Supabase 栈 |
+| `make supa-stop` | 停止本地 Supabase |
+| `make supa-reset` | 重置本地 DB（重新执行所有 migration）|
+| `make supa-fn` | 本地热加载 Edge Function |
+| `make deploy-fn` | 部署 Edge Function 到云端 |
+
+#### Makefile 编写规范
+
+```makefile
+# ① 顶部声明所有 .PHONY 目标（避免与同名文件冲突）
+.PHONY: help setup run test ...
+
+# ② 默认目标必须是 help，无参数运行时显示帮助
+.DEFAULT_GOAL := help
+
+# ③ help 目标用 @echo 打印彩色分类说明
+help:
+    @echo "..."
+
+# ④ 每个目标前加 guard，检查依赖工具是否已安装
+_check-flutter:
+    @which flutter > /dev/null 2>&1 || (echo "✗ flutter not found" && exit 1)
+
+# ⑤ 输出风格统一：用颜色区分状态
+#   ▶ 青色：正在执行   ✓ 绿色：成功   ✗ 红色：失败   ⚠ 黄色：警告
+```
+
+#### 维护要求
+
+- 每次新增工具链命令（新的 CLI、新的服务），**同步更新 Makefile**
+- `make setup` 必须在 CI 环境（无交互）中可执行（所有步骤不弹出确认）
+- 每次修改 Makefile，同步更新 README 的"快速开始"章节
+
+### 6.6 代码规范
 
 - **注释原则**：只写"为什么"，不写"是什么"。代码能自解释的地方不加注释
 - **函数长度**：单个函数不超过 50 行，超过则拆分
@@ -431,8 +491,9 @@ Impact（影响）  × Confidence（把握）
 - [ ] 确认多主题方案（≥2套 + Light/Dark）
 - [ ] 确认商业模式（订阅？免费？）
 - [ ] 设计习惯循环（Trigger → Routine → Reward → Investment）
-- [ ] 创建 Git 仓库 + 必须工程文件
-- [ ] 配置 CI/CD
+- [ ] 创建 Git 仓库 + 必须工程文件（含 Makefile + .env.example）
+- [ ] 验证 `make setup && make run` 在全新环境可完整执行
+- [ ] 配置 CI/CD（`make check` 等价于 CI 流水线）
 - [ ] 确认分支策略
 
 ### 每次需求变更 Checklist
@@ -445,4 +506,13 @@ Impact（影响）  × Confidence（把握）
 
 ---
 
-*文档结束 · Product Standards v1.0 · Lumoryx*
+---
+
+## 变更历史
+
+| 版本 | 日期 | 变更说明 |
+|------|------|---------|
+| v1.0 | 2026-05-10 | 初版：研发流程、多语言、多主题、习惯系统、商业模式、安全、工程规范、需求转化 |
+| v1.1 | 2026-05-11 | 新增 6.5 Make 工作流规范：Makefile 强制标准、必须目标清单、编写规范、维护要求；必须工程文件新增 Makefile + .env.example；立项 Checklist 补充 make setup 验证项 |
+
+*文档结束 · Product Standards v1.1 · Lumoryx*
