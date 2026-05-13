@@ -31,6 +31,15 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Show package_config state
+        run: |
+          echo "=== flutter_gen in package_config ==="
+          python3 -c "import json; d=json.load(open('.dart_tool/package_config.json')); matches=[p for p in d['packages'] if 'flutter_gen' in p['name']]; print('flutter_gen count:', len(matches)); [print(p) for p in matches]"
+          echo "=== .dart_tool/flutter_gen dir ==="
+          ls .dart_tool/flutter_gen/ 2>/dev/null && echo "EXISTS" || echo "NOT EXISTS"
+          echo "=== lib/core/l10n/generated ==="
+          ls lib/core/l10n/generated/ 2>/dev/null || echo "NOT EXISTS"
+
       - name: Generate code
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
@@ -39,8 +48,8 @@ jobs:
           set -o pipefail
           flutter analyze --fatal-infos 2>&1 | tee analyze_output.txt
 
-      - name: Upload analyze output on failure
-        if: failure()
+      - name: Upload analyze output always
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: analyze-output
