@@ -45,8 +45,8 @@ jobs:
 
       - name: Run analyzer
         run: |
-          set -o pipefail
-          flutter analyze --fatal-infos 2>&1 | tee analyze_output.txt
+          dart analyze --fatal-infos lib/ test/ 2>&1 | tee analyze_output.txt
+          exit ${PIPESTATUS[0]}
 
       - name: Upload analyze output always
         if: always()
