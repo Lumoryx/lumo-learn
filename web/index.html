@@ -29,8 +29,12 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>lumo_learn</title>
+  <title>Lumo Learn</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Runtime config: injected by deploy/entrypoint.sh in Docker,
+       or served as a static file with real values in other setups. -->
+  <script src="config.js"></script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
