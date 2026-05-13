@@ -6,8 +6,9 @@
 .pub-cache/
 .pub/
 build/
-*.g.dart
-*.freezed.dart
+# Generated files are committed so CI doesn't need build_runner
+# *.g.dart
+# *.freezed.dart
 *.mocks.dart
 
 # Android

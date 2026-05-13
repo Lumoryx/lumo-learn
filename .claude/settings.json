@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport subprocess, json, sys\nresult = subprocess.run(\n    ['bash', '-c', 'export PATH=\\\"/tmp/flutter/bin:\\$PATH\\\" && make check'],\n    capture_output=True, text=True, cwd='/home/user/lumo-learn'\n)\nif result.returncode != 0:\n    output = (result.stdout + result.stderr)[:3000]\n    print(json.dumps({\n        'continue': False,\n        'stopReason': 'CI check failed — fix errors before finishing.',\n        'hookSpecificOutput': {\n            'hookEventName': 'Stop',\n            'additionalContext': 'CI errors found. Please fix all errors before stopping:\\n' + output\n        }\n    }))\n\"",
+            "timeout": 120,
+            "statusMessage": "Running CI checks (make check)..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport sys, json\ntry:\n    data = json.load(sys.stdin)\n    cmd = data.get('tool_input', {}).get('command', '')\n    if 'git push' in cmd:\n        print(json.dumps({'systemMessage': '推送成功 ✓ 可使用 subscribe_pr_activity 监听 PR 的 CI 状态和 Review 评论，实现自动修复失败。'}))\nexcept Exception:\n    pass\n\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

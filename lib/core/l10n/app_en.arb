@@ -1,0 +1,168 @@
+{
+  "@@locale": "en",
+
+  "appName": "Lumo Learn",
+  "appTagline": "Your AI English habit, in 5 minutes a day.",
+
+  "authTitle": "Welcome to\nLumo Learn",
+  "authSubtitle": "Start your 14-day free Pro trial",
+  "authContinueWithApple": "Continue with Apple",
+  "authContinueWithGoogle": "Continue with Google",
+  "authOrDivider": "or",
+  "authEmailPlaceholder": "Email address",
+  "authPasswordPlaceholder": "Password",
+  "authSignInWithEmail": "Sign in with Email",
+  "authNoAccount": "Don't have an account? Sign up",
+  "authTermsNote": "By continuing you agree to our Terms of Service",
+
+  "onboardingStep": "Step {current} of {total}",
+  "@onboardingStep": {
+    "placeholders": {
+      "current": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+  "onboardingGoalTitle": "Why are you learning English?",
+  "onboardingGoalTravel": "Travel",
+  "onboardingGoalCareer": "Career",
+  "onboardingGoalExam": "Exam Prep",
+  "onboardingGoalImmigration": "Immigration",
+  "onboardingGoalInterest": "Just for fun",
+  "onboardingLevelTitle": "What's your English level?",
+  "onboardingLevelBeginner": "Beginner",
+  "onboardingLevelBeginnerSub": "Just starting out",
+  "onboardingLevelElementary": "Elementary",
+  "onboardingLevelElementarySub": "Basic conversations",
+  "onboardingLevelIntermediate": "Intermediate",
+  "onboardingLevelIntermediateSub": "Read & write well",
+  "onboardingLevelAdvanced": "Advanced",
+  "onboardingLevelAdvancedSub": "Near native",
+  "onboardingInterestsTitle": "Pick your favorite topics",
+  "onboardingInterestsSubtitle": "Choose up to 3",
+  "onboardingInterestsTech": "Technology",
+  "onboardingInterestsBusiness": "Business",
+  "onboardingInterestsCulture": "Culture",
+  "onboardingInterestsSports": "Sports",
+  "onboardingInterestsEntertainment": "Entertainment",
+  "onboardingInterestsTravel": "Travel",
+  "onboardingInterestsScience": "Science",
+  "onboardingInterestsFood": "Food & Cooking",
+  "onboardingContinue": "Continue",
+  "onboardingPrivacyNote": "🔒 Your data is private and never sold",
+
+  "welcomeProTitle": "You're Pro!",
+  "welcomeProSubtitle": "14-day free trial activated",
+  "welcomeProUnlocked": "What you unlocked:",
+  "welcomeProFeatureAi": "Full AI-personalized content",
+  "welcomeProFeatureFreeze": "Streak freeze cards (3/month)",
+  "welcomeProFeatureThemes": "All 4 premium themes",
+  "welcomeProFeatureStats": "Complete learning analytics",
+  "welcomeProFeatureNoAds": "Zero ads, ever",
+  "welcomeProCta": "Start Learning →",
+  "welcomeProDisclaimer": "No credit card needed · Cancel anytime",
+
+  "homeGreetingMorning": "Good morning ☀️",
+  "homeGreetingAfternoon": "Good afternoon 🌤",
+  "homeGreetingEvening": "Good evening 🌙",
+  "homeStreakDay": "Day {count} streak 🔥",
+  "@homeStreakDay": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "homeTodayTheme": "Today's Theme",
+  "homeWordsCardTitle": "{count} Words",
+  "@homeWordsCardTitle": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "homeWordsCardCta": "Start Learning →",
+  "homeArticleCardTitle": "Article",
+  "homeArticleCardReadTime": "~{min} min · {level}",
+  "@homeArticleCardReadTime": {
+    "placeholders": {
+      "min": {"type": "int"},
+      "level": {"type": "String"}
+    }
+  },
+  "homeArticleCardCta": "Read Now →",
+  "homeThisWeek": "This Week",
+  "homeLoyaltyProgress": "Keep going for {days} more days to earn your FREE month!",
+  "@homeLoyaltyProgress": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "homeLoyaltyDays": "{done}/{total} days",
+  "@homeLoyaltyDays": {
+    "placeholders": {
+      "done": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+
+  "flashcardTapToReveal": "Tap to reveal",
+  "flashcardListen": "🔊 Listen",
+  "flashcardForgot": "✗  Forgot",
+  "flashcardGotIt": "✓  Got it!",
+  "flashcardProgress": "{current} / {total}",
+  "@flashcardProgress": {
+    "placeholders": {
+      "current": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+
+  "articleListenAll": "🔊 Listen",
+  "articleMarkWord": "Add to vocabulary",
+  "articleDone": "Done Reading ✓",
+
+  "celebrateTitle": "Day {day} Complete! 🔥",
+  "@celebrateTitle": {
+    "placeholders": {
+      "day": {"type": "int"}
+    }
+  },
+  "celebrateSubtitle": "You learned {words} words today\nand read 1 article.",
+  "@celebrateSubtitle": {
+    "placeholders": {
+      "words": {"type": "int"}
+    }
+  },
+  "celebrateShare": "📤  Share Your Progress",
+  "celebrateHome": "→ Continue to Home",
+
+  "paywallTitle": "Unlock Your Full\nLearning Potential",
+  "paywallTrialBadge": "14-day free trial",
+  "paywallMonthly": "Monthly",
+  "paywallMonthlyPrice": "$6.99/mo",
+  "paywallAnnual": "Annual",
+  "paywallAnnualPrice": "$39.99/yr",
+  "paywallAnnualSaving": "Save 52%",
+  "paywallCta": "Start Free Trial",
+  "paywallDisclaimer": "Cancel anytime · No charge during trial",
+  "paywallRestore": "Restore Purchase",
+
+  "settingsTitle": "Settings",
+  "settingsProfile": "Profile",
+  "settingsTheme": "Theme & Appearance",
+  "settingsLanguage": "Language",
+  "settingsNotifications": "Notifications",
+  "settingsSubscription": "Subscription",
+  "settingsHelp": "Help & Feedback",
+  "settingsSignOut": "Sign Out",
+
+  "themeTitle": "Theme",
+  "themeAppearance": "Appearance",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "themeUnlockedByStreaks": "Unlocked by Streaks",
+  "themeLocked": "🔒 {days} days",
+  "@themeLocked": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  }
+}
