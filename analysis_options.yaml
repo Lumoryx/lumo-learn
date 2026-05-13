@@ -6,6 +6,7 @@ analyzer:
     - "**/*.freezed.dart"
     - ".dart_tool/**"
     - "build/**"
+    - "lib/core/l10n/generated/**"
 
 linter:
   rules:
