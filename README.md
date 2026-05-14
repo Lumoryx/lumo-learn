@@ -6,6 +6,53 @@ A personalized AI-powered English learning app for iOS, Android, and Web. Built 
 
 ---
 
+## Deploy to Railway (One-Click)
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template)
+
+### Quick Start (Docker)
+
+```bash
+# 1. Clone and configure
+git clone https://github.com/lumoryx/lumo-learn.git
+cd lumo-learn
+cp .env.example .env          # fill in SUPABASE_URL and SUPABASE_ANON_KEY
+
+# 2. Build and run locally
+docker-compose up --build     # → http://localhost:3000
+```
+
+### Railway Setup (First Time)
+
+1. **Sign up** at [railway.app](https://railway.app)
+2. **New Project** → **Deploy from GitHub repo** → select `lumoryx/lumo-learn`
+3. **Environment Variables** (Settings → Variables):
+   ```
+   SUPABASE_URL      = https://your-project.supabase.co
+   SUPABASE_ANON_KEY = your-anon-key
+   APP_ENV           = production
+   ```
+4. **GitHub Secret** for CI/CD (GitHub repo → Settings → Secrets → Actions):
+   ```
+   RAILWAY_TOKEN = <Railway token from railway.app/account/tokens>
+   ```
+5. Push to `main` → CI runs → on green, Railway deploys automatically
+
+### CI/CD Pipeline
+
+```
+feature branch  →  PR  →  CI checks (analyze + test + build)
+                            ↓ all green
+                         merge to main
+                            ↓
+                    deploy-railway.yml
+                    (re-runs CI, then: railway up)
+                            ↓
+                    🚀 Live on Railway
+```
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
